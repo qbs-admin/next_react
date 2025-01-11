@@ -1,15 +1,4 @@
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata = {
   title: "Create Next App",
@@ -66,15 +55,11 @@ export default function RootLayout({ children }) {
               <span className="sr-only">Analytics</span>
             </a>
           </nav>
-          <nav className="mt-auto flex flex-col items-center gap-4 px-2 sm:py-5">
-            <a className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8" data-state="closed" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-settings h-5 w-5"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path><circle cx="12" cy="12" r="3"></circle></svg><span className="sr-only">Settings</span>
-            </a>
-          </nav>
         </aside>
-        <div className="flex flex-col sm:gap-4 sm:py-4 sm:pl-14">
-          <header className="sticky top-0 z-30 flex h-14 justify-between items-center gap-4 border-b bg-background px-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6">
-            <nav aria-label="breadcrumb" className="flex w-full">
-              <ol className="flex flex-wrap items-center gap-1.5 break-words text-sm text-black sm:gap-2.5">
+        <div className="flex flex-col sm:gap-4 sm:pl-14 w-full">
+          <header className="sticky top-0 z-30 flex justify-between items-center p-4 w-full border-b-2 shadow-sm">
+            <nav aria-label="breadcrumb" className="flex w-full text-black justify-between">
+              <ol className="flex flex-wrap items-center gap-1.5 break-words text-sm sm:gap-2.5">
                 <li className="inline-flex items-center gap-1.5">
                   <a className="transition-colors hover:text-foreground" href="#">Dashboard</a>
                 </li>
@@ -95,15 +80,43 @@ export default function RootLayout({ children }) {
                   <span role="link" aria-disabled="true" aria-current="page" className="font-normal text-black">All Products</span>
                 </li>
               </ol>
-            </nav>
-            <div className="flex w-2/4">
-              <input className="flex h-10 border border-input px-3 py-2 text-sm ring-offset-background mr-3 file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full rounded-lg bg-background pl-8 md:w-[200px] lg:w-[336px]" placeholder="Search..." type="search" name="q" />
 
-              <button className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 w-10 overflow-hidden rounded-full" type="button" id="radix-:r9:" aria-haspopup="menu" aria-expanded="false" data-state="closed">
-                <img alt="Avatar" loading="lazy" width="36" height="36" decoding="async" data-nimg="1" className="overflow-hidden rounded-full" srcSet="/_next/image?url=%2Fplaceholder-user.jpg&amp;w=48&amp;q=75 1x, /_next/image?url=%2Fplaceholder-user.jpg&amp;w=96&amp;q=75 2x" src="/_next/image?url=%2Fplaceholder-user.jpg&amp;w=96&amp;q=75" /></button>
-            </div>
+
+              <div className="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
+                <div className="px-4 py-3">
+                  <span className="block text-sm text-gray-900 dark:text-white">Bonnie Green</span>
+                  <span className="block text-sm  text-gray-500 truncate dark:text-gray-400">name@flowbite.com</span>
+                </div>
+                <ul className="py-2" aria-labelledby="user-menu-button">
+                  <li>
+                    <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Dashboard</a>
+                  </li>
+                  <li>
+                    <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Settings</a>
+                  </li>
+                  <li>
+                    <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Earnings</a>
+                  </li>
+                  <li>
+                    <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
+                  </li>
+                </ul>
+              </div>
+
+
+              <div className="flex items-center">
+                <div>
+                  <p className="mr-3 font-extralight">QBS Support</p>
+                  <p className="mr-3 text-xs">QBS Support</p>
+                </div>
+                <div className="h-10 w-10 rounded-full bg-black">
+
+                </div>
+              </div>
+            </nav>
           </header>
           <main className="grid flex-1 items-start gap-2 p-4 sm:px-6 sm:py-0 md:gap-4 bg-muted/40">
+            {children}
           </main>
         </div>
       </body>
